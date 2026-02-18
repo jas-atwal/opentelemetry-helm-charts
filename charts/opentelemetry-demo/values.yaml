@@ -415,7 +415,8 @@ components:
     useDefault:
       env: true
     service:
-      port: 8080
+      type: LoadBalancer  # Change from ClusterIP to LoadBalancer
+      port: 8080          # You can also change this to 80 if desired
     podAnnotations:
       resource.opentelemetry.io/service.namespace: otel-demo
       io.opentelemetry.discovery.metrics/enabled: 'true'
@@ -588,7 +589,7 @@ components:
         value: http://$(OTEL_COLLECTOR_NAME):4317
     resources:
       limits:
-        memory: 20Mi
+        memory: 256Mi
 
   product-reviews:
     enabled: true
