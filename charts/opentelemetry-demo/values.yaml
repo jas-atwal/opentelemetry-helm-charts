@@ -1019,10 +1019,10 @@ opentelemetry-collector:
 
 jaeger:
   enabled: true
+  fullnameOverride: jaeger
   query:
     service:
       type: LoadBalancer
-  fullnameOverride: jaeger
   jaeger:
     storage:
       type: memory
@@ -1167,10 +1167,9 @@ prometheus:
 
 grafana:
   enabled: true
-  query:
-    service:
-      type: LoadBalancer
   fullnameOverride: grafana
+  service:
+    type: LoadBalancer
   testFramework:
     enabled: false
   grafana.ini:
