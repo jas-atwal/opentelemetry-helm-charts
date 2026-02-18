@@ -1019,6 +1019,8 @@ opentelemetry-collector:
 
 jaeger:
   enabled: true
+  service:
+    type: LoadBalancer  # Change from ClusterIP
   fullnameOverride: jaeger
   jaeger:
     storage:
@@ -1164,6 +1166,8 @@ prometheus:
 
 grafana:
   enabled: true
+  service:
+    type: LoadBalancer  # Change from ClusterIP
   fullnameOverride: grafana
   testFramework:
     enabled: false
