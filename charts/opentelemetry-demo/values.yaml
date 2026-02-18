@@ -1170,6 +1170,7 @@ grafana:
   fullnameOverride: grafana
   service:
     type: LoadBalancer
+    port: 8082  # Change this from 80 to 8082 to avoid conflict with frontend-proxy
   testFramework:
     enabled: false
   grafana.ini:
