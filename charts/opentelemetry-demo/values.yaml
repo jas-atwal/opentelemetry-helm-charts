@@ -1189,8 +1189,8 @@ grafana:
       enabled: true
     resources:
       limits:
-        cpu: 100m
-        memory: 100Mi
+        cpu: 500m
+        memory: 512Mi
   resources:
     limits:
       memory: 175Mi
