@@ -362,6 +362,10 @@ components:
     podAnnotations:
       resource.opentelemetry.io/service.namespace: otel-demo
     env:
+      - name: HOSTNAME  # Added to fix an issue with Next.js where it doesn't bind to the correct interface in Kubernetes
+        value: "0.0.0.0"
+      - name: FRONTEND_PORT
+        value: "8080"
       - name: FRONTEND_PORT
         value: "8080"
       - name: PORT
@@ -400,7 +404,7 @@ components:
         value: http://localhost:8080/otlp-http/v1/traces             # This expects users to use `kubectl port-forward ...`
     resources:
       limits:
-        memory: 250Mi
+        memory: 512Mi # Increased from 250Mito ensure there's enough memory for the application and the OpenTelemetry instrumentation, especially when using the frontend-proxy sidecar which also adds some overhead
     securityContext:
       runAsUser: 1001  # nextjs
       runAsGroup: 1001
@@ -921,7 +925,7 @@ opentelemetry-collector:
         enabled: true
   resources:
     limits:
-      memory: 200Mi
+      memory: 512Mi # Increased from 200Mi to ensure there's enough memory for the configured receivers, processors, and exporters, especially when using the hostMetrics and kubeletMetrics presets which can add some overhead
   service:
     enabled: true
   ports:
