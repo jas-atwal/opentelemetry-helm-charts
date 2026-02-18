@@ -1019,8 +1019,9 @@ opentelemetry-collector:
 
 jaeger:
   enabled: true
-  service:
-    type: LoadBalancer  # Change from ClusterIP
+  query:
+    service:
+      type: LoadBalancer  # Add the 'query' block to configure the Jaeger Query service as a LoadBalancer
   fullnameOverride: jaeger
   jaeger:
     storage:
