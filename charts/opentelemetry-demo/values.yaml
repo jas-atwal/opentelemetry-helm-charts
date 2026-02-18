@@ -1019,10 +1019,6 @@ opentelemetry-collector:
 
 jaeger:
   enabled: true
-  query:
-    service:
-      type: LoadBalancer
-      port: 16686  # Explicitly defining the port helps OrbStack map the traffic correctly to the frontend-proxy sidecar which is also exposing Grafana and the image provider on the same port 80
   jaeger:
     storage:
       type: memory
