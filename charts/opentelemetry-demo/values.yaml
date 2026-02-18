@@ -1019,7 +1019,8 @@ opentelemetry-collector:
 
 jaeger:
   enabled: true
-  fullnameOverride: jaeger
+  # commented out fullnameOverride to use the default generated name which is important for OrbStack's traffic routing to work correctly with the frontend-proxy sidecar. If you change this, make sure to also update the JAEGER_HOST environment variable in the frontend-proxy configuration to match the new service name.
+  # fullnameOverride: jaeger
   query:
     service:
       type: LoadBalancer
