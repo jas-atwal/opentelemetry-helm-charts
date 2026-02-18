@@ -1021,7 +1021,7 @@ jaeger:
   enabled: true
   query:
     service:
-      type: LoadBalancer  # Add the 'query' block to configure the Jaeger Query service as a LoadBalancer
+      type: LoadBalancer
   fullnameOverride: jaeger
   jaeger:
     storage:
@@ -1167,8 +1167,9 @@ prometheus:
 
 grafana:
   enabled: true
-  service:
-    type: LoadBalancer  # Change from ClusterIP
+  query:
+    service:
+      type: LoadBalancer
   fullnameOverride: grafana
   testFramework:
     enabled: false
